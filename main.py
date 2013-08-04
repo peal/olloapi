@@ -18,11 +18,25 @@ import webapp2
 from webapp2_extras import json
 #import auth
 
-class Pong(webapp2.RequestHandler):
+class Base(webapp2.RequestHandler):
+    def options(self):
+        self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, OPTIONS, DELETE'
+        self.response.headers['Access-Control-Allow-Origin'] = '*'
+        self.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+
+class Pong(Base):
     def get(self):
+        self.response.headers['Access-Control-Allow-Origin'] = '*'
+        self.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         self.response.content_type = 'application/json'
         self.response.write(json.encode('pong'))
 
 app = webapp2.WSGIApplication([
-    ('/ping', Pong),
+        ('/ping', Pong),
 ], debug=True)
+
+def main():
+    app.run()
+
+if __name__ == '__main__':
+    main()
