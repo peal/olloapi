@@ -39,16 +39,14 @@ class TestFriends(object):
         assert response.status_int == 200
         assert json.decode(response.body) == {
             'friends': [{
-                'user': {
-                    'id': '43',
-                    'name': u'Ål La',
-                    'photo': 'http://i.imgur.com/hrjGuN3.png',
-                    'location': {
-                        'latitude': 40.689068,
-                        'longitude': 74.044625,
-                        'message': u'Hollå!',
-                        'age': 1
-                    }
+                'id': '43',
+                'name': u'Ål La',
+                'photo': 'http://i.imgur.com/hrjGuN3.png',
+                'location': {
+                    'latitude': 40.689068,
+                    'longitude': 74.044625,
+                    'message': u'Hollå!',
+                    'age': 1
                 }
             }]
         }
